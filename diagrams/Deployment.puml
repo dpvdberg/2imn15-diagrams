@@ -1,0 +1,47 @@
+@startuml
+title Deployment Diagram
+
+cloud Internet
+node Router
+
+package "Controller Nodes" {
+    node "Hue Bridge" <<device>> as bridge {
+        node "Embedded OS" <<platform>>
+    }
+    node "Motion Sensor" as ms
+    node Switch
+}
+node "Smartphone\n(in LAN)" <<device>> as phoneLAN {
+    node "User OS" <<platform>> as uo1 {
+        node "Hue App" <<artifact>> as app1
+    }
+}
+node "Smartphone\n(outside LAN)" <<device>> as phoneCellular {
+    node "User OS" <<platform>> as uo2 {
+        node "Hue App" <<artifact>> as app2
+    }
+}
+
+package "Light Nodes" {
+    node Bulb as b1
+    node "..." as dots
+    node Bulb as b2
+}
+
+database datacenter {
+    node "Philips Hue Server" as philips
+}
+
+philips -- Internet
+Internet -- Router
+Router --- bridge : "<<protocol>>\nEthernet\n802.3"
+Router ... phoneLAN : "<<protocol>>\nWiFi\n802.11"
+Internet .... phoneCellular : "Cellular data"
+Switch ~~ ms : "<<protocol>>\nZigbee\n802.15.4"
+bridge ~~ Switch : "<<protocol>>\nZigbee\n802.15.4"
+b2 ~ Switch : "<<protocol>>\nZigbee\n802.15.4"
+b2 ~ ms : "<<protocol>>\nZigbee\n802.15.4"
+b1 ~ dots : "<<protocol>>\nZigbee\n802.15.4"
+dots ~ b2 : "<<protocol>>\nZigbee\n802.15.4"
+
+@enduml

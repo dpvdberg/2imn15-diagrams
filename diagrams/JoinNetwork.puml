@@ -1,0 +1,20 @@
+@startuml
+title Join network using TouchLink - use case
+
+participant "Hue bridge" as Hue
+participant Light
+
+note over Hue: periodically
+
+Hue-> Light: Scan request
+Light --> Hue: Scan response
+
+Hue -> Light: Device information request
+Light --> Hue: Device information response
+
+Hue -> Light: Identify request
+note over Light: blinks as confirmation
+
+Hue -> Light: Network join request
+Light --> Hue: network join response
+@enduml

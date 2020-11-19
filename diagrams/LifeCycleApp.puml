@@ -1,0 +1,67 @@
+@startuml
+
+card construction [
+<b>(Re)construction</b>
+----
+Application development
+- Specification
+- Design
+- Programming
+- Testing
+]
+
+card deployment [
+<b>Deployment</b>
+--
+- Application available on appstores
+- Users install app
+==
+Initial release <i><color:blue>April 2016</color></i>
+Current version <i><color:blue>3.44.0 : October 2020</color></i>
+]
+
+card execution [
+<b>Execution</b>
+--
+- Connect to Hue bridge over LAN
+- Execute application logic
+]
+
+card plugindevelopment [
+<b>Plugins development</b>
+--
+- Addition of new scenes
+- Extending Philips Hue Labs
+]
+
+card pluginintegration [
+<b>Plugins integration</b>
+--
+- Testing of scenes
+- Integration in Hue app
+]
+
+card termination [
+<b>Termination</b>
+--
+- Stop service access
+- Remove application components
+- End of life
+]
+
+card reconfiguration [
+<b>Reconfiguration</b>
+--
+- Reconfigure application
+]
+
+construction -> deployment
+deployment --> execution
+reconfiguration -> execution
+deployment <- termination
+execution -> termination
+reconfiguration <-- execution
+execution --> plugindevelopment
+plugindevelopment -> pluginintegration
+pluginintegration --> execution
+@enduml

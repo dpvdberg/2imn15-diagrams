@@ -1,0 +1,16 @@
+@startuml
+title Turn on light - Use Case
+
+participant Switch
+participant "Hue bridge" as Hue
+participant Light_i
+participant ... as A
+participant Light_k
+
+Switch-> Hue: Light on request
+Hue -> Light_i: On/Off cluster \n request for Light_k
+Light_i -> A: On/Off cluster \n request for Light_k
+A -> Light_k: On/Off cluster \n request for Light_k
+Light_k -> Light_k: Light on
+
+@enduml
