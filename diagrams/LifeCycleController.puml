@@ -5,18 +5,13 @@ card Construction [
 --
 - Development of firmware and hardware
 - Development of firmware updates
-==
-- Hue gen 1: <i><color:blue>October 2012</color></i>
-- Hue gen 2: <i><color:blue>October 2015</color></i>
-- Hue gen 3: <i><color:blue>October 2016</color></i>
-- Hue gen 4: <i><color:blue>December 2017</color></i>
 ]
 
 card Production [
 <b>Production</b>
 --
-- Mass produce light bulbs
-- Support different sockets
+- Mass produce devices
+- Flash firmware
 ]
 
 card Update [
@@ -28,16 +23,16 @@ card Update [
 card IC [
 <b>Installation and Commissioning</b>
 --
-- Install light bulbs
-- Connect to power
-- Connect to Hue Bridge using ZLL
+- Place or install device
+- Connect to power or battery
+- Connect to Hue Bridge using Zigbee
 - Form network
 ]
 
 card Operation [
 <b>Operation</b>
 --
-- Receive commands from network
+- Send commands to bridge or light bulb
 - Redirect commands through network
 - Possibly poll updates from bridge
 ]
@@ -46,8 +41,8 @@ card Decommissioning [
 <b>Decommissioning</b>
 --
 - Factory reset
-- Remove from socket
-- End of life (lifespan of bulb)
+- Physical removal of device
+- End of life
 ]
 
 Construction -> Update

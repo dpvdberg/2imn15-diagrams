@@ -6,7 +6,7 @@ node Router
 
 package "Controller Nodes" {
     node "Hue Bridge" <<device>> as bridge {
-        node "Embedded OS" <<platform>>
+        node "Embedded firmware" <<component>>
     }
     node "Motion Sensor" as ms
     node Switch

@@ -1,0 +1,48 @@
+@startuml
+
+card construction [
+<b>(Re)construction</b>
+----
+Service development
+- Specification
+- Implementation
+- Testing
+]
+
+card deployment [
+<b>Deployment</b>
+--
+- Install service on hosting provider
+- Start service
+]
+
+card execution [
+<b>Execution</b>
+--
+- Publish service for discovery
+- Deliver updates
+- Allow connectivity to network outside LAN
+- Receive and synchronize user data
+]
+
+card termination [
+<b>Termination</b>
+--
+- Deactivate service
+- Remove service from hosting
+- End of life
+]
+
+card reconfiguration [
+<b>Reconfiguration</b>
+--
+- Change service parameters
+]
+
+construction -> deployment
+deployment --> execution
+reconfiguration -> execution
+deployment <- termination
+execution -> termination
+reconfiguration <-- execution
+@enduml

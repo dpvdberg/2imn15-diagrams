@@ -1,0 +1,46 @@
+@startuml
+
+card construction [
+<b>(Re)construction</b>
+----
+Service development
+- Specification
+- Implementation
+- Testing
+]
+
+card deployment [
+<b>Deployment</b>
+--
+- Install service on Hue bridge
+- Distribute service OTA
+- Start service
+]
+
+card execution [
+<b>Execution</b>
+--
+- Publish bridge service over LAN
+- Deliver service
+]
+
+card termination [
+<b>Termination</b>
+--
+- Stop service on bridge
+- End of life
+]
+
+card reconfiguration [
+<b>Reconfiguration</b>
+--
+- Change parameters in service
+]
+
+construction -> deployment
+deployment --> execution
+reconfiguration -> execution
+deployment <- termination
+execution -> termination
+reconfiguration <-- execution
+@enduml
