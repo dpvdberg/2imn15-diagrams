@@ -1,6 +1,4 @@
 @startuml
-title Deployment Diagram
-
 cloud Internet
 node Router
 
@@ -34,14 +32,14 @@ database datacenter {
 
 philips -- Internet
 Internet -- Router
-Router --- bridge : "<<protocol>>\nEthernet\n802.3"
-Router ... phoneLAN : "<<protocol>>\nWiFi\n802.11"
+Router --- bridge : "<<protocol>>\nEthernet - 802.3"
+Router ... phoneLAN : "<<protocol>>\nWiFi - 802.11"
 Internet .... phoneCellular : "Cellular data"
-Switch ~~ ms : "<<protocol>>\nZigbee\n802.15.4"
-bridge ~~ Switch : "<<protocol>>\nZigbee\n802.15.4"
-b2 ~ Switch : "<<protocol>>\nZigbee\n802.15.4"
-b2 ~ ms : "<<protocol>>\nZigbee\n802.15.4"
-b1 ~ dots : "<<protocol>>\nZigbee\n802.15.4"
-dots ~ b2 : "<<protocol>>\nZigbee\n802.15.4"
+Switch ~~ ms
+bridge ~~ Switch : "<<protocol>>\nZigbee - 802.15.4"
+b2 ~ Switch
+b2 ~ ms
+b1 ~ dots
+dots ~ b2
 
 @enduml

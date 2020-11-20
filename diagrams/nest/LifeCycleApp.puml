@@ -1,0 +1,51 @@
+@startuml
+
+card construction [
+<b>(Re)construction</b>
+----
+Application development
+- Specification
+- Design
+- Programming
+- Testing
+]
+
+card deployment [
+<b>Deployment</b>
+--
+- Application available on appstores
+- Users install app
+==
+Initial release <i><color:blue>Juni 2015</color></i>
+Current version <i><color:blue>5.58.0.3 : October 2020</color></i>
+]
+
+card execution [
+<b>Execution</b>
+--
+- Start Thread network using border router
+- Add devices to network
+- Execute application logic
+]
+
+card termination [
+<b>Termination</b>
+--
+- Stop service access
+- Remove application components
+- End of life
+]
+
+card reconfiguration [
+<b>Reconfiguration</b>
+--
+- Reconfigure application
+]
+
+construction -> deployment
+deployment --> execution
+reconfiguration -> execution
+deployment <- termination
+execution -> termination
+reconfiguration <-- execution
+@enduml

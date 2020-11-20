@@ -1,0 +1,54 @@
+@startuml
+
+card Construction [
+<b>(Re)construction</b>
+--
+- Development of firmware and hardware
+- Development of firmware updates
+]
+
+card Production [
+<b>Production</b>
+--
+- Mass produce Nest devices
+]
+
+card Update [
+<b>Update</b>
+--
+- Firmware update deployment
+]
+
+card IC [
+<b>Installation and Commissioning</b>
+--
+- Install device by user
+- Connect to power if necessary
+- Connect to network
+]
+
+card Operation [
+<b>Operation</b>
+--
+- Receive commands from Google services
+- Redirect commands through network
+- Possibly poll updates from Google services
+]
+
+card Decommissioning [
+<b>Decommissioning</b>
+--
+- Factory reset
+- Remove from socket
+- End of life
+]
+
+Construction -> Update
+Construction -> Production
+Update --> Operation
+Operation --> Update
+Production --> IC
+IC --> Operation
+Operation -> Decommissioning
+IC <- Decommissioning
+@enduml

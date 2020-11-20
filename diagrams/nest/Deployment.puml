@@ -1,0 +1,31 @@
+@startuml
+title Deployment Diagram
+
+database datacenter {
+    node "Google server" as google
+}
+
+cloud "Internet" as i
+node "Thread border router" as r
+node "Smartphone" as sp
+node "Nest device 1\n..\nRouter eligable\nNetwork leader" as r1 #CD6600
+node "Nest device 2\n..\nRouter eligable" as r2 #FF9933
+node "Nest device 3\n..\nRouter eligable" as r3 #FF9933
+node "Nest device 4\n..\nRouter eligable" as r4 #FF9933
+node "Nest device 6\n..\nEnd device" as r5 #CCFFFF
+node "Nest device 5\n..\nEnd device" as r6 #CCFFFF
+
+google -- i
+i -- r
+i .. sp  #line:green : Cellular data
+r . sp  #line:gray : <<protocol>>\nWiFi - 802.11
+r ~~ r1 : <<protocol>>\nThread
+
+r1 ~~ r2
+r1 ~~ r3
+r3 ~~~  r4
+r2 ~ r6
+r4 ~ r5
+
+r .... r5   #line:gray : <<protocol>>\nWiFi - 802.11
+@enduml
